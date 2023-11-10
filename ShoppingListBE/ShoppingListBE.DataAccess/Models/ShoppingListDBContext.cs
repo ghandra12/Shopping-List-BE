@@ -14,6 +14,10 @@ namespace ShoppingListBE.DataAccess.Models
         { }
 
         public DbSet<Client> Clients => Set<Client>();
+        public DbSet<Product> Products => Set<Product>();
+        public DbSet<Category> Categories => Set<Category>();
+        public DbSet<List> Lists => Set<List>();
+        public DbSet<ListProduct> ListsProducts => Set<ListProduct>();
     }
 
 }

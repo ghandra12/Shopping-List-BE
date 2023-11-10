@@ -16,5 +16,8 @@ namespace ShoppingListBE.DataAccess.Models
         public bool IsAdmin { get; set; }
         public string PhoneNumber { get; set; } = "";
 
+        public ICollection<Product> Products { get; }= new List<Product>();
+        public ICollection<Category> Categories { get; } = new List<Category>();
+        public ICollection<List> Lists { get; } = new List<List>();
     }
 }
