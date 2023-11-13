@@ -1,5 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using ShoppingListBE.BusinessLogic.IServices;
+using ShoppingListBE.BusinessLogic.Services;
+using ShoppingListBE.DataAccess;
+using ShoppingListBE.DataAccess.IRepository;
 using ShoppingListBE.DataAccess.Models;
+using ShoppingListBE.DataAccess.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +20,11 @@ builder.Services.AddDbContext<ShoppingListDBContext>(options => {
 
     options.UseSqlServer(connectionString);
 });
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IClientService, ClientService>();
 
 var app = builder.Build();
 

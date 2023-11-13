@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="IServices\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\ShoppingListBE.DataAccess\ShoppingListBE.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
