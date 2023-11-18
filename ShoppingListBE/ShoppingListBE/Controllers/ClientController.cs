@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShoppingListBE.BusinessLogic.DTOs;
 using ShoppingListBE.BusinessLogic.IServices;
+using ShoppingListBE.BusinessLogic.Services;
 using ShoppingListBE.DataAccess.Models;
 
 namespace ShoppingListBE.Controllers
@@ -15,10 +16,17 @@ namespace ShoppingListBE.Controllers
             clientService = _clientService;
         }
 
-        [HttpGet(Name = "GetClients")]
+        [HttpGet]
         public List<ClientDto> Get()
         {
             return clientService.GetClients();
         }
+        [HttpGet]
+        [Route("{clientId}")]
+        public List<ClientDto> Get(int clientId)
+        {
+            return clientService.GetClientById(clientId);
+        }
+
     }
 }

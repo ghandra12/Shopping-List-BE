@@ -11,6 +11,9 @@ namespace ShoppingListBE.DataAccess.IRepository
     {
         IClientRepository Clients { get; }
         IProductRepository Products { get; }
+        IListRepository Lists { get; }
+        IListProductRepository ListsProducts { get; }
+        ICategoryRepository Categories { get; }
 
         int SaveChanges();
     }

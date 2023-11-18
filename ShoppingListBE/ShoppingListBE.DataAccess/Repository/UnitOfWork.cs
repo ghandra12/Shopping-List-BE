@@ -15,7 +15,9 @@ namespace ShoppingListBE.DataAccess.Repository
         private readonly ShoppingListDBContext db;
         private IClientRepository? clientsRepository;
         private IProductRepository? productsRepository;
-
+        private IListProductRepository? listsproductsRepository;
+        private IListRepository? listRepository;
+        private ICategoryRepository? categoriesRepository;
         public UnitOfWork(ShoppingListDBContext dbContext)
         {
             db = dbContext;
@@ -42,6 +44,41 @@ namespace ShoppingListBE.DataAccess.Repository
                     this.productsRepository = new ProductRepository(db);
                 }
                 return this.productsRepository;
+            }
+        }
+
+        public IListProductRepository ListsProducts
+        {
+            get
+            {
+                if (this.listsproductsRepository == null)
+                {
+                    this.listsproductsRepository = new ListProductRepository(db);
+                }
+                return this.listsproductsRepository;
+            }
+        }
+
+        public IListRepository Lists
+        {
+            get
+            {
+                if (this.listRepository == null)
+                {
+                    this.listRepository = new ListRepository(db);
+                }
+                return this.listRepository;
+            }
+        }
+
+        public ICategoryRepository Categories        {
+            get
+            {
+                if (this.categoriesRepository == null)
+                {
+                    this.categoriesRepository = new CategoryRepository(db);
+                }
+                return this.categoriesRepository;
             }
         }
 

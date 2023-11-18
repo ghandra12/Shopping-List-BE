@@ -16,5 +16,11 @@ namespace ShoppingListBE.BusinessLogic.Services
             var clients = unitOfWork.Clients.GetAll();
             return clients.Select(c => new ClientDto() { Id = c.Id, Name = c.FirstName + " " +c.LastName }).ToList();
         }
+
+        public List<ClientDto> GetClientById(int id)
+        {
+            var client = unitOfWork.Clients.GetAll().Where(c => c.Id == id);
+            return client.Select(c=>new ClientDto() { Id = c.Id,Name=c.FirstName + " " +c.LastName}).ToList();
+        }
     }
 }

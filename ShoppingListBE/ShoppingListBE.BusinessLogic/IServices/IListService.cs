@@ -1,4 +1,5 @@
-﻿using ShoppingListBE.BusinessLogic.DTOs;
+﻿using Microsoft.EntityFrameworkCore;
+using ShoppingListBE.BusinessLogic.DTOs;
 using ShoppingListBE.DataAccess.Models;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace ShoppingListBE.BusinessLogic.IServices
 {
-    public interface IClientService
+    
+   
+    public interface IListService
     {
-        List<ClientDto> GetClients();
-        List<ClientDto> GetClientById(int id);
+        List<ListDto> GetLists(int id);
     }
 }
