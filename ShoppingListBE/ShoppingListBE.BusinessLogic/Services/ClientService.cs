@@ -1,6 +1,7 @@
 ﻿using ShoppingListBE.BusinessLogic.DTOs;
 using ShoppingListBE.BusinessLogic.IServices;
 using ShoppingListBE.DataAccess.IRepository;
+using ShoppingListBE.DataAccess.Models;
 
 namespace ShoppingListBE.BusinessLogic.Services
 {
@@ -21,6 +22,11 @@ namespace ShoppingListBE.BusinessLogic.Services
         {
             var client = unitOfWork.Clients.GetAll().Where(c => c.Id == id);
             return client.Select(c=>new ClientDto() { Id = c.Id,Name=c.FirstName + " " +c.LastName}).ToList();
+        }
+        public async Task AddClient(ClientDto client)
+        {
+            await unitOfWork.Clients.InsertAsync(new Client { FirstName = client.FirstName,LastName=client.LastName,Email=client.Email,Password=client.Password,PhoneNumber=client.PhoneNumber});
+            unitOfWork.SaveChanges();
         }
     }
 }

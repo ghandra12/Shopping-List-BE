@@ -20,5 +20,10 @@ namespace ShoppingListBE.Controllers
         {
             return categoryService.GetGeneralCategories();
         }
+        [HttpPost]
+        public async Task Insert([FromForm]AddCategoryDto category)
+        {
+            await categoryService.AddCategory(category);
+        }
     }
 }

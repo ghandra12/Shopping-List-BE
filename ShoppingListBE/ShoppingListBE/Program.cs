@@ -21,6 +21,14 @@ builder.Services.AddDbContext<ShoppingListDBContext>(options => {
     options.UseSqlServer(connectionString);
 });
 
+builder.Services.AddCors(o => o.AddPolicy("MyAllowSpecificOrigins",
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:3000")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                      }));
+
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -38,6 +46,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("MyAllowSpecificOrigins");
 
 app.UseHttpsRedirection();
 

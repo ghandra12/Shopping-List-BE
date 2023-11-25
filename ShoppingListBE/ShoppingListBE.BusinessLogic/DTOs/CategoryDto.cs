@@ -12,5 +12,6 @@ namespace ShoppingListBE.BusinessLogic.DTOs
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
         public int? ClientId { get; set; }
+        public string? Image {  get; set; }
     }
 }

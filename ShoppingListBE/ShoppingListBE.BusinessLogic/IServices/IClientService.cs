@@ -12,5 +12,6 @@ namespace ShoppingListBE.BusinessLogic.IServices
     {
         List<ClientDto> GetClients();
         List<ClientDto> GetClientById(int id);
+        Task AddClient(ClientDto client);
     }
 }

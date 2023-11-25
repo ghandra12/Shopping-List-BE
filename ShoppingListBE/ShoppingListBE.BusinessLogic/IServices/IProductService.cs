@@ -10,6 +10,10 @@ namespace ShoppingListBE.BusinessLogic.IServices
 {
     public interface IProductService
     {
-        List<ProductDto> GetProductsByCategory(int id);
+        List<ProductDto> GetProductsByCategory(int id); 
+        Task AddProduct(AddProductDto product);
     }
+
+  
+   
 }

@@ -10,5 +10,6 @@ namespace ShoppingListBE.BusinessLogic.IServices
     public interface ICategoryService
     {
         List<CategoryDto> GetGeneralCategories();
+        Task AddCategory(AddCategoryDto category);
     }
 }

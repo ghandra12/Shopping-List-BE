@@ -21,12 +21,12 @@ namespace ShoppingListBE.Controllers
         {
             return clientService.GetClients();
         }
-        [HttpGet]
-        [Route("{clientId}")]
-        public List<ClientDto> Get(int clientId)
-        {
-            return clientService.GetClientById(clientId);
-        }
 
+
+        [HttpPost]
+        public async Task Insert([FromBody] ClientDto client)
+        {
+            await clientService.AddClient(client);
+        }
     }
 }

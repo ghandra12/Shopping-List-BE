@@ -15,10 +15,18 @@ namespace ShoppingListBE.Controllers
         }
 
         [HttpGet]
-        public List<ProductDto> Get(int categoryId)
+        [Route("{categoryId}")]
+        public List<ProductDto> Get([FromRoute] int categoryId)
         {
             
             return productService.GetProductsByCategory(categoryId);
+        }
+
+        [HttpPost]
+        public async Task Insert([FromForm] AddProductDto product)
+        {
+        
+            await productService.AddProduct(product);
         }
     }
 }
